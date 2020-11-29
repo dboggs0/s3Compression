@@ -1,0 +1,53 @@
+<!doctype html>
+<style>
+   body {
+      background-color: #161918;
+      font-family: verdana;
+   }
+
+   h1 {
+      color: white;
+
+   }
+
+   td {
+      color: white;
+
+      font-family: verdana;
+      font-size: 20px;
+   }
+</style>
+<html>
+
+<body>
+   <H1>S3 File Auto-Compressor</H1>
+   <table>
+      <tr>
+         <td>Total uploaded:</td>
+         <td>{{totalItems}}</td>
+      </tr>
+      <tr>
+         <td>Average files per day:</td>
+         <td>{{avgFilesPerDay}}</td>
+      </tr>
+      <tr>
+         <td>Total size of uploaded files in bytes:</td>
+         <td>{{totalUploadBytes}}</td>
+      </tr>
+      <tr>
+         <td>Total size of compressed uploads in bytes:</td>
+         <td>{{totalCompressedBytes}}</td>
+      </tr>
+      <tr>
+         <td>Total bytes saved after compression:</td>
+         <td>{{totalBytesSaved}}</td>
+      </tr>
+      <tr>
+         <td>Percentage of space savings:</td>
+         <td>{{percentBytesSaved}}</td>
+      </tr>
+   </table>
+
+</body>
+
+</html>
