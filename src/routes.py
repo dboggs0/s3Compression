@@ -1,14 +1,14 @@
 from flask import Flask, render_template
 from getJobHistory import getStats, getItemList
 
-def create_app(testing: bool = True):
-    app = Flask(__name__)
 
-    @app.route('/')
-    def main_page():
-        stats = getStats(getItemList())
+app = Flask(__name__)
 
-        return render_template('statTemplate.html', totalItems = stats['totalItems'], 
-                                avgFilesPerDay = stats['avgFilesPerDay'], totalUploadBytes = stats['totalUploadBytes'], 
-                                totalCompressedBytes = stats['totalCompressedBytes'], totalBytesSaved = stats['totalBytesSaved'],
-                                percentBytesSaved = stats['percentBytesSaved'])
+@app.route('/')
+def main_page():
+    stats = getStats(getItemList())
+
+    return render_template('statTemplate.html', totalItems = stats['totalItems'], 
+                            avgFilesPerDay = stats['avgFilesPerDay'], totalUploadBytes = stats['totalUploadBytes'], 
+                            totalCompressedBytes = stats['totalCompressedBytes'], totalBytesSaved = stats['totalBytesSaved'],
+                            percentBytesSaved = stats['percentBytesSaved'])
