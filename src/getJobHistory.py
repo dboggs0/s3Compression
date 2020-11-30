@@ -4,9 +4,10 @@ import humanfriendly
 
 dynamodb = boto3.resource('dynamodb')
 table = dynamodb.Table('CompressionJobHistory')
-tableDict = table.scan()
+#tableDict = table.scan()
 
 def getItemList():
+    tableDict = table.scan()
     return tableDict["Items"]
 
 def getStats(ItemList):
