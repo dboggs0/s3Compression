@@ -43,7 +43,7 @@ def compress(object):
 
     zipBuffer.seek(0)
 
-    timeStamp = time.time().split('.')[0]
+    timeStamp = str(time.time()).split('.')[0]
     bucket.upload_fileobj(fName + "_" + str(timeStamp) + ".zip")
 
     bucketObjects = bucket.objects.all()

@@ -2,6 +2,7 @@ import boto3
 from zipfile import ZipFile, ZIP_DEFLATED
 from io import BytesIO
 from dynamo import *
+import time
 
 
 # Print out bucket names
@@ -32,13 +33,15 @@ def compress(object):
     zipFile.close()
 
     zipBuffer.seek(0)
-    bucket.upload_fileobj(zipBuffer, fName + ".zip")
+    timeStamp = str(time.time()).split('.')[0]
+    bucket.upload_fileobj(zipBuffer, fName + "_" + str(timeStamp) + ".zip")
 
     bucketObjects = bucket.objects.all()
     compressedSize = 0
 
+    
     for i in bucketObjects:
-        if (i.key == fName + ".zip"):
+        if (i.key == fName + "_" + str(timeStamp) + ".zip"):
             compressedSize = i.size
 
     zipBuffer.close()
@@ -53,7 +56,7 @@ def compress(object):
             'Quiet': True
         }
     )
-    addJobHistory(fName + ".zip", originalFileSize, compressedSize)
+    addJobHistory(fName + "_" + str(timeStamp) + ".zip", originalFileSize, compressedSize)
 
 
     
