@@ -44,7 +44,7 @@ def compress(object):
     zipBuffer.seek(0)
 
     timeStamp = str(time.time()).split('.')[0]
-    bucket.upload_fileobj(fName + "_" + str(timeStamp) + ".zip")
+    bucket.upload_fileobj(zipBuffer, fName + "_" + str(timeStamp) + ".zip")
 
     bucketObjects = bucket.objects.all()
     compressedSize = 0
@@ -76,5 +76,5 @@ def lambda_handler(event, context):
     for i in obj:
         fExt = i.key.split('.')[-1]
         fName = i.key.split('.')[-2]
-        if fExt == 'bmp':
+        if fExt != 'zip':
             compress(i)
