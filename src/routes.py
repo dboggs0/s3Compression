@@ -1,5 +1,5 @@
 from flask import Flask, render_template
-from getJobHistory import getStats, getItemList
+from src.getJobHistory import getStats, getItemList
 
 
 app = Flask(__name__)
@@ -12,3 +12,4 @@ def main_page():
                             avgFilesPerDay = stats['avgFilesPerDay'], totalUploadBytes = stats['totalUploadBytes'], 
                             totalCompressedBytes = stats['totalCompressedBytes'], totalBytesSaved = stats['totalBytesSaved'],
                             percentBytesSaved = stats['percentBytesSaved'])
+

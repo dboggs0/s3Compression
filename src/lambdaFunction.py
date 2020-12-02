@@ -5,8 +5,6 @@ from botocore.utils import datetime2timestamp
 from datetime import datetime
 import time
 
-tempFile = '/tmp/tempFile'
-
 s3 = boto3.resource('s3')
 bucket = s3.Bucket('s3compression')
 
@@ -31,16 +29,13 @@ def compress(object):
     zipBuffer = BytesIO()
     zipFile = ZipFile(zipBuffer, mode='w', compression=ZIP_DEFLATED)
 
-
     imageFile = BytesIO()
 
     bucket.download_fileobj(str(object.key), imageFile)
-
     imageFile.seek(0)
 
     zipFile.writestr(object.key, imageFile.read())
     zipFile.close()
-
     zipBuffer.seek(0)
 
     timeStamp = str(time.time()).split('.')[0]
@@ -67,14 +62,8 @@ def compress(object):
     )
     addJobHistory(fName + ".zip", originalFileSize, compressedSize)
 
-
-    
 def lambda_handler(event, context):
+    uploadedFile = event["Records"][0]['s3']['object']['key']
 
-    obj = bucket.objects.all()
-    
-    for i in obj:
-        fExt = i.key.split('.')[-1]
-        fName = i.key.split('.')[-2]
-        if fExt != 'zip':
-            compress(i)
+    if not 'zip' in uploadedFile:
+        compress(s3.ObjectSummary('s3compression', uploadedFile))
