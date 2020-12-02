@@ -65,5 +65,7 @@ def compress(object):
 def lambda_handler(event, context):
     uploadedFile = event["Records"][0]['s3']['object']['key']
 
-    if not 'zip' in uploadedFile:
-        compress(s3.ObjectSummary('s3compression', uploadedFile))
+    obj = s3.ObjectSummary('s3compression', uploadedFile)
+
+    if (not 'zip' in uploadedFile) and (obj.size > 1000000):
+        compress(obj)
