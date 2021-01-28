@@ -10,3 +10,6 @@ Automatically compress files uploaded to an AWS S3 bucket.  By default all files
 * AWS EC2
 * AWS Lambda
 * AWS DynamoDB
+
+## Instructions
+Refer to AWS_S3compression_Instructions.docx
