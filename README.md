@@ -58,7 +58,7 @@ Make sure that zip is installed. If not, it can be installed with the following 
 ```
 $ apt install zip
 ```
-Install the AWS CLI.
+### Install the AWS CLI.
 
 [https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-linux.html#cliv2-linux-install](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-linux.html#cliv2-linux-install)
 ```
@@ -106,7 +106,7 @@ $ pip install -t requirements.txt
 ```
 The Statistics Site is now installed. It will be started later.
 
-## Create an S3 Bucket
+### Create an S3 Bucket
 
 Go to S3 in the AWS Management Console.
 
@@ -118,7 +118,7 @@ Make sure the Region is the same as the one for the EC2 instance.
 
 The default name for the bucket in this project is s3compression. If you want to use a different one the code will need to be updated.
 
-## Create a DynamoDB Table
+### Create a DynamoDB Table
 
 Go to DynamoDB in the AWS Management Console.
 
@@ -128,7 +128,7 @@ The default table name for this project is CompressionJobHistory. To use the def
 
 In order to use a different table name the project code must be modified.
 
-## Create Lambda Function
+### Create Lambda Function
 
 Go to Lambda in the AWS Management Console.
 
