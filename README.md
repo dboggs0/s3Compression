@@ -40,10 +40,10 @@ Full instructions on how to access the new instance using the key pair are avail
 
 Upgrade the OS packages
 
-_$ sudo apt update_
-
-_$ sudo apt upgrade_
-
+```
+$ sudo apt update
+$ sudo apt upgrade
+```
 This process will take a few minutes. While it progresses create an AWS Security Credential.
 
 Click Create New Access Key
@@ -55,63 +55,55 @@ Make note of the Access Key ID, and Secret Access Key.
 Go back to the EC2 Instance Console.
 
 Make sure that zip is installed. If not, it can be installed with the following command (Ubuntu):
-
-_$ apt install zip_
-
+```
+$ apt install zip
+```
 Install the AWS CLI.
 
 [https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-linux.html#cliv2-linux-install](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-linux.html#cliv2-linux-install)
-
-_$ curl &quot;https://awscli.amazonaws.com/awscli-exe-linux-x86\_64-2.0.30.zip&quot; -o &quot;awscliv2.zip&quot;_
-
-_$ unzip awscliv2.zip_
-
-_$ sudo ./aws/install_
-
+```
+$ curl &quot;https://awscli.amazonaws.com/awscli-exe-linux-x86\_64-2.0.30.zip&quot; -o &quot;awscliv2.zip&quot;
+$ unzip awscliv2.zip
+$ sudo ./aws/install
+```
 Add your access key to the AWS CLI.
-
-_$ aws configure_
-
-_AWS Access Key ID [None]: \*\*\*…\*TBQQ_
-
-_AWS Secret Access Key [None]: \*\*\*…\*K0a5A1_
-
-_Default region name [None]: us-east-2_
-
-_Default output format [None]:_
-
+```
+$ aws configure
+AWS Access Key ID [None]: \*\*\*…\*TBQQ
+AWS Secret Access Key [None]: \*\*\*…\*K0a5A1
+Default region name [None]: us-east-2
+Default output format [None]:
+```
 For a list of region codes refer here:
 
 [https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions)
 
 Clone the GitHub repository.
-
-_$ git clone https://github.com/dboggs0/s3Compression.git_
-
+```
+$ git clone https://github.com/dboggs0/s3Compression.git
+```
 Install Python 3.6 or higher.
-
-_$ sudo apt install python_
-
+```
+$ sudo apt install python
+```
 Install virtualenv.
-
-_$ sudo apt install virtualenv_
-
+```
+$ sudo apt install virtualenv
+```
 Create a virtual environment for the project.
-
-_$ virtualenv s3Compression_
-
+```
+$ virtualenv s3Compression
+```
 Activate the virtual environment.
-
-_$ cd s3Compression/bin_
-
-_$ . activate_
-
+```
+$ cd s3Compression/bin
+$ . activate
+```
 Install the project dependencies.
-
-_$ cd .._
-
-_$ pip install -t requirements.txt_
-
+```
+$ cd ..
+$ pip install -t requirements.txt
+```
 The Statistics Site is now installed. It will be started later.
 
 ## Create an S3 Bucket
@@ -187,11 +179,10 @@ Click Deploy.
 At this point the statistic site can be started.
 
 On the EC2 Instance run the following commands.
-
-_$ export FLASK\_APP=&quot;routes.py&quot;_
-
-_$ flask run –host=0.0.0.0_
-
+```
+$ export FLASK\_APP=&quot;routes.py&quot;
+$ flask run –host=0.0.0.0
+```
 The installation is complete.
 
 ## Using the Application
